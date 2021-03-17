@@ -1,5 +1,7 @@
 package com.cte4.mic.appclient.controller;
 
+import java.util.Random;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +11,13 @@ public class DemoController {
 
     @GetMapping(value = "/hello/{name}")
     public String sayHello(@PathVariable String name) {
-        return "hello " + name;
+        Random random = new Random();
+        long sleepy = random.nextInt(200);
+        try {
+            Thread.sleep(sleepy);
+        } catch (InterruptedException e) {
+        }
+        return String.format("%s slept %s ms",name, sleepy);
     }
 
     @GetMapping(value = "/class/{path}")
