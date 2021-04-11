@@ -3,6 +3,8 @@ package com.cte4.mic.appclient.controller;
 import java.util.Random;
 
 import com.e4.maclient.annotation.Counted;
+import com.e4.maclient.annotation.Monitor;
+import com.e4.maclient.annotation.Tag;
 import com.e4.maclient.annotation.Timed;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +17,17 @@ import lombok.extern.log4j.Log4j2;
 
 @RestController
 @Log4j2
+@Monitor(module="AppClient.Controller")
 public class DemoController {
 
+    // @Counted
+    private int callTimes;
+
     @GetMapping(value = "/hello/{name}")
+    @Counted(recordFailureOnly = true, description = "test")
     @Timed(extraTags = {"host", "module"})
+    @Tag("method='sayHello'")
+    @Tag("severity='HIGH'")
     public String sayHello(@PathVariable String name) {
         Random random = new Random();
         long sleepy = random.nextInt(200);
@@ -52,7 +61,6 @@ public class DemoController {
     }
 
     @PostMapping(value = "/env")
-    @Counted
     public String putProperty(@RequestParam("name") String name, @RequestParam("value") String value) {
         String msg = String.format("key=%s, value=%s", name, value);
         try {
