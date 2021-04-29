@@ -26,7 +26,7 @@ public class CustomerServiceController {
 
     @GetMapping(value = "/loan/{id}")
     public String getLoan(@PathVariable String id) throws ServiceException {
-        Timer timer = Timer.builder("customer_service").tags("severity", "HIGH")
+        Timer timer = Timer.builder("customer_service").tags("severity", "HIGH", "function", "loan")
             .publishPercentileHistogram().minimumExpectedValue(Duration.ofMillis(1))
             .maximumExpectedValue(Duration.ofSeconds(5))
             .publishPercentiles(0.5, 0.95).register(meterRegistery);
@@ -39,18 +39,16 @@ public class CustomerServiceController {
 
     @LatencySPI
     @Tag("severity='LOW'")
+    @Tag("function='customer'")
     @GetMapping(value = "/customer/{path}")
     public String getCusomer(@PathVariable String path) throws ClassNotFoundException {
         log.info("call getCusomer(): param - " + path);
-        String msg = String.format("Good to find class: %s", path);
         try {
-            Class.forName(path);
             this.doMore();
         } catch (Exception e) {
-            msg = e.toString();
             log.error("fail to get customer, error=" + e);
         }
-        return msg;
+        return path;
     }
 
     private long doMore() throws ServiceException {
@@ -59,9 +57,6 @@ public class CustomerServiceController {
         try {
             Thread.sleep(sleepy);
         } catch (InterruptedException e) {
-        }
-        if(sleepy%2==0) {
-            throw new ServiceException("unknown issue");
         }
         return sleepy;
     }

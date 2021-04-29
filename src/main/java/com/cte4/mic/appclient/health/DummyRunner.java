@@ -5,7 +5,6 @@ import java.util.Random;
 import javax.annotation.PostConstruct;
 
 import com.cte4.mic.appclient.controller.CustomerServiceController;
-import com.cte4.mic.appclient.controller.ServiceException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,7 +28,8 @@ public class DummyRunner {
                 while(!endSignal) {
                     try {
                         csController.getLoan(getChaoes());
-                        Thread.sleep(5);
+                        csController.getCusomer(getChaoes());
+                        Thread.sleep(500);
                     } catch (Exception e) {
                     }
                 }
