@@ -1,4 +1,4 @@
-package com.cte4.mic.appclient;
+package com.cte4.mac.example;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
@@ -7,7 +7,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;

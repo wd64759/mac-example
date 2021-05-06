@@ -1,4 +1,4 @@
-package com.cte4.mic.appclient.hook;
+package com.cte4.mac.example.hook;
 
 import java.io.IOException;
 import java.net.URI;

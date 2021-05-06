@@ -1,4 +1,4 @@
-package com.cte4.mic.appclient;
+package com.cte4.mac.example;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

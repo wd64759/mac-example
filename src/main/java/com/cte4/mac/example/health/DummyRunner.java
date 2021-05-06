@@ -1,10 +1,10 @@
-package com.cte4.mic.appclient.health;
+package com.cte4.mac.example.health;
 
 import java.util.Random;
 
 import javax.annotation.PostConstruct;
 
-import com.cte4.mic.appclient.controller.CustomerServiceController;
+import com.cte4.mac.example.controller.CustomerServiceController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

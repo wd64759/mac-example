@@ -1,11 +1,11 @@
-package com.cte4.mic.appclient.controller;
+package com.cte4.mac.example.controller;
 
 import java.time.Duration;
 import java.util.Random;
 
-import com.e4.maclient.annotation.LatencySPI;
-import com.e4.maclient.annotation.MonitorSPI;
-import com.e4.maclient.annotation.Tag;
+import com.e4.mac.annotation.LatencySPI;
+import com.e4.mac.annotation.MonitorSPI;
+import com.e4.mac.annotation.Tag;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
