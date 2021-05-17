@@ -31,7 +31,7 @@ public class CustomerServiceController {
             .maximumExpectedValue(Duration.ofSeconds(5))
             .publishPercentiles(0.5, 0.95).register(meterRegistery);
         Timer.Sample sample = Timer.start();
-        log.info("call getLoan(): param - " + id);
+        // log.info("call getLoan(): param - " + id);
         long cost = this.doMore();
         sample.stop(timer);
         return String.format("%s slept %s ms", id, cost);
@@ -42,7 +42,7 @@ public class CustomerServiceController {
     @Tag("function='customer'")
     @GetMapping(value = "/customer/{path}")
     public String getCusomer(@PathVariable String path) throws ClassNotFoundException {
-        log.info("call getCusomer(): param - " + path);
+        // log.info("call getCusomer(): param - " + path);
         try {
             this.doMore();
         } catch (Exception e) {
